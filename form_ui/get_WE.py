@@ -68,9 +68,12 @@ def hello():
 
         probBefore = win_expectancy.getState(df, int(b_inning), b_top_bot, b_on_1b, b_on_2b, b_on_3b, int(b_outs), int(b_home_score)-int(b_away_score))
         probCurrent = win_expectancy.getState(df, int(b_inning), b_top_bot, on_1b, on_2b, on_3b, int(outs), int(home_score)-int(away_score))
-        r = win_expectancy.getRank(ranking, b_team_home)
+        if b_top_bot == 'Bot':
+            r = win_expectancy.getRank(ranking, b_team_home)
+        else:
+            r = win_expectancy.getRank(ranking, b_team_away)
         newProb = win_expectancy.getWeight(probBefore, probCurrent, r)
-        print (newProb)
+        flash(newProb)
 
     
     return render_template('hello.html', form=form)
