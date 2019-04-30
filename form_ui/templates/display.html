@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Display</title>
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css"/>
+
+        <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/gh/kenwheeler/slick@1.8.0/slick/slick-theme.css"/>
+
+        <!-- <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/forScroll.css') }}"/> -->
+        <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/display.css') }}">
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+        <script type="text/javascript" src="slick/slick.min.js"></script>
+        <script src="../static/js/tabs.js" defer></script>
+
+        <style type="text/css">
+            @font-face {
+                font-family: "HelveticaNeue";
+                src: url(../static/fonts/HelveticaNeue-01.ttf) format("truetype");
+            }
+            @font-face {
+                font-family: "HelveticaNeueBold";
+                src: url(../static/fonts/HelveticaNeue-CondensedBlack-10.ttf) format("truetype");
+            }
+            @font-face {
+                font-family: "HelveticaNeueHead";
+                src: url(../static/fonts/HelveticaNeue-Bold-02.ttf) format("truetype");
+            }
+            @font-face {
+                font-family: "HelveticaNeueBody";
+                src: url(../static/fonts/HelveticaNeue-Medium-11.ttf) format("truetype");
+            }
+            body { 
+                font-family: "HelveticaNeue", Helvetica, Arial, sans-serif;
+            }
+            p.name, p.subtitle, .tab1, .tab2, .tab3 { 
+                font-family: "HelveticaNeueBold", Helvetica, Arial, sans-serif;
+            }
+            p.heading, .search { 
+                font-family: "HelveticaNeueHead", Helvetica, Arial, sans-serif;
+            }
+            .paragraph { 
+                font-family: "HelveticaNeueBody", Helvetica, Arial, sans-serif;
+            }
+            </style>
+
+        <!-- <meta http-equiv="refresh" content="1"> -->
+    </head>
+    <body>
+      <div class="container">
+      <div class="forAbout">
+      <div class="about">
+      {% set category = request.args.get('category') %}
+      {% if category == 'people' %}
+        {% set array = peoplecatarr %}
+        {% set oldarray = tabsarr %}
+        {% set index = 0 %}
+      {% endif %}
+      {% if category == 'athletes' %}
+        {% set array = athletesarr %}
+        {% set oldarray = peoplecatarr %}
+        {% set index = 0 %}
+      {% endif %}
+      {% if category == 'astronauts' %}
+        {% set array = astronautsarr %}
+        {% set oldarray = peoplecatarr %}
+        {% set index = 1 %}
+      {% endif %}
+      {% if category == 'history' %}
+        {% set array = historycatarr %}
+        {% set oldarray = tabsarr %}
+        {% set index = 1 %}
+      {% endif %}
+      {% if category == 'athletics' %}
+        {% set array = athleticscatarr %}
+        {% set oldarray = tabsarr %}
+        {% set index = 2 %}
+      {% endif %}
+
+      {% if array %}
+      {% for oldarr in oldarray %}
+        <div id="Person0" class="tabcontent">
+          <div class='slider person_images' align='center'>
+            <div><p><img id="personImg" src='../static/imj/{{ oldarr[index]['name'] }}_image1.jpg' width='400' height='320'></p></div>
+            <div><p><img id="personImg" src='../static/imj/{{ oldarr[index]['name'] }}_image2.jpg' width='400' height='320'></p></div>
+            <div><p><img id="personImg" src='../static/imj/{{ oldarr[index]['name'] }}_image3.jpg' width='400' height='320'></p></div>
+          </div>
+          <p>
+            <div class="info">
+            {% for key in oldarr[index] %}
+              {% if key != 'paragraph1' and key != 'paragraph2' and key != 'paragraph3' %}
+                <p class='{{ key }}'> {{ oldarr[index][key] }} </p>
+              {% endif %}
+            {% endfor %}
+            <div class="slider paragraph">
+            {% for key in oldarr[index] %}
+              {% if key == 'paragraph1' or key == 'paragraph2' or key == 'paragraph3' %}
+                <div><p class='{{ key }}'> {{ oldarr[index][key] }} </p></div>
+                {% endif %}
+              {% endfor %}
+            </div>
+          </p>
+        </div>
+      </div>
+        {%endfor%}
+
+        {% for arr in array %}
+          {% for i in range(arr.count()) %}
+            <div id="Person{{ i+1 }}" class="tabcontent">
+              <div class="slider person_images" align='center'>
+                <div><p><img id="personImg" src='../static/imj/{{ arr[i]['name'] }}_image1.jpg' width='400' height='320'></p></div>
+                <div><p><img id="personImg" src='../static/imj/{{ arr[i]['name'] }}_image2.jpg' width='400' height='320'></p></div>
+                <div><p><img id="personImg" src='../static/imj/{{ arr[i]['name'] }}_image3.jpg' width='400' height='320'></p></div>
+              </div>
+              <p>
+                <div class="info">
+                {% for key in arr[i] %}
+                  {% if key != 'paragraph1' and key != 'paragraph2' and key != 'paragraph3' %}
+                    <p class='{{ key }}'> {{ arr[i][key] }} </p>
+                  {% endif %}
+                {% endfor %}
+                <div class="slider paragraph">
+                {% for key in arr[i] %}
+                  {% if key == 'paragraph1' or key == 'paragraph2' or key == 'paragraph3' %}
+                    <div><p class='{{ key }}'> {{ arr[i][key] }} </p></div>
+                    {% endif %}
+                  {% endfor %}
+                </div>
+              </p>
+            </div>
+          </div>
+        {% endfor %}
+      {% endfor %}
+
+
+
+    </div>
+  </div>
+  </div>
+  <img id= 'greyCirc'src='../static/imj/greyCirc.png' >
+    <div class="buttons">
+      {% for arr in array %}
+      {% for i in range(arr.count()) %}
+        {% if array == peoplecatarr %}
+          <div><button class="tablink" onclick="loadPage('{{ arr[i]['name'] }}')"><img src='../static/imj/{{ arr[i]['name'] }}_icon.jpg' ></button></div>
+        {% else %}
+          <div><button class="tablink" onclick="openCity('Person{{ i+1 }}', this)"><img src='../static/imj/{{ arr[i]['name'] }}_icon.jpg' ></button></div>
+        {% endif %}
+        {% endfor %}
+      {% endfor %}
+      {% else %}
+          <div id="Person{{ 1 }}" class="tabcontent">
+          <div class='person_images' align='center'>
+            <div><p><img id="personImg" src='../static/imj/default.jpg' width='400' height='320'></p></div>
+          </div>
+          <p>
+            <div class="info">
+            <div class='paragraph'>
+              <p> There is no information here! </p>
+            </div>
+          </p>
+        </div>
+      </div>
+      {% endif %}
+      </div>
+<!--       <button onclick="scrollMe('left')"> <img id="arrowL" src='../static/imj/arrowLeft.png' > </button>
+      <button onclick="scrollMe('right')"> <img id="arrowR" src='../static/imj/arrowRight.png'> </button> -->
+
+       <div class="categories">
+       	<p class='tab1' onclick='loadPage("people")'> People </p>
+       	<p class='tab2' onclick='loadPage("history")'> History </p>
+       	<p class='tab3' onclick='loadPage("athletics")'> Athletics </p>
+       </div>
+       <img id= 'blackCirc'src='../static/imj/blackCirc.png' >
+       <div class="search">
+       		<a href="{{ url_for('people') }}">Search</a>
+       </div>
+       <script type="text/javascript" src="//cdn.jsdelivr.net/gh/kenwheeler/slick@1.8.0/slick/slick.min.js"></script>
+    </body>
+
+      <!-- adding jquery -->
+    <script>
+
+      $(document).ready(function(){
+        $('.buttons').slick({
+          infinite: true,
+          slidesToShow: 3,
+          slidesToScroll: 1,
+          // autoplay: true,
+          // autoplaySpeed: 2000,
+        });
+        $('.slider').slick({
+          asNavFor: '.slider'
+          // infinite: true,
+          // autoplay: true,
+          // autoplaySpeed: 2000,
+        });
+
+      });
+    </script>
+    <script type="text/javascript">
+      function loadPage(arg) {
+        var newstate = "?category=" + arg;
+        window.history.replaceState(null, null, newstate.toLowerCase());
+        location.reload();
+      }
+    </script>
+</html>

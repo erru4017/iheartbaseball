@@ -1,0 +1,83 @@
+<!-- Code adapted from https://pythonspot.com/flask-web-forms/ -->
+
+<!DOCTYPE html>
+<html>
+   <head>
+      <title>Search for a Person</title>
+      <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/search31.css') }}">
+      <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
+    <meta name="viewport" content="width = device-width, initial-scale =1.0"/>
+   </head>
+   <body>
+     <script src="../static/js/makeform.js"></script>
+         <header>
+           <div class="container">
+             <h1 class="logo">Search for {{ request.form['name'] }}</h1>
+             <strong><nav>
+               <ul class="menu">
+                <li><a href="{{ url_for('hello') }}">Add a Person</a></li>
+                <li><a href="{{ url_for('people') }}">Index</a></li>
+                <li><a href="{{ url_for('search') }}">Search for a person</a></li>
+                <li><a href="{{ url_for('display') }}">Display</a></li>
+               </ul>
+             </nav></strong>
+           </div>
+         </header>
+      <ul>
+          <div class="about">
+            <p>
+              {% if person %}
+                <br>
+                <h2>Results</h2>
+              {% endif %}
+              {% if person == 'none' %}
+                <p>No results found.</p>
+              {% endif %}
+              {% for p in person %}
+                <p><a href='/person/?name={{ p['name'] }}'>{{ p['name'] }}</a></p>
+              {% endfor %}
+              {% if person %}
+                <br><br>
+                <h3> Search again</h3>
+              {% endif %}
+            </p>
+          </div>
+      </ul>
+
+      <form action="" method="post" enctype="multipart/form-data">
+         {{ form.csrf }}
+         <div class="columns">
+            <div class="nothing1">
+               <p></p>
+            </div>
+            <div class="form-group">
+               <div class="names">
+                  <table>
+                     <tr>
+                        {% for letter in alpha %}
+                        <td><input type = "submit" class="form-control" value = {{letter}} id="name" name="name"></td>
+                        {% endfor %}
+
+                     </tr>
+                  </table>
+                  <table>
+                     <tr>
+                        {% for letter in bet %}
+                        <td><input type = "submit" class="form-control" value = {{letter}} id="name" name="name"></td>
+                        {% endfor %}
+                     </tr>
+                  </table>
+
+               </div>
+               <br><br>
+            </div>
+            <div class="nothing2">
+               <p></p>
+            </div>
+         </div>
+         <div class="inputSubmit">
+            <input type="submit" value="Submit" />
+         </div>
+      </form>
+   </body>
+</html>

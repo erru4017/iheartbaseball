@@ -1,0 +1,44 @@
+<!-- THIS IS THE INDEX PAGE -->
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>People in Database</title>
+        <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/search31.css') }}">
+      <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
+    <meta name="viewport" content="width = device-width, initial-scale =1.0"/>
+    </head>
+    <body>
+    	<header>
+            <div class="container">
+              <h1 class="logo">Index</h1>
+              <strong><nav>
+                <ul class="menu">
+                  <li><a href="{{ url_for('hello') }}">Add a Person</a></li>
+                  <li><a href="{{ url_for('people') }}">Index</a></li>
+                  <li><a href="{{ url_for('search') }}">Search for a person</a></li>
+                  <li><a href="{{ url_for('display') }}">Display</a></li>
+                </ul>
+              </nav></strong>
+            </div>
+          </header>
+    	<div class="about">
+        <br>
+
+        <p>
+           {% for person in people %}
+           <p><a href='/person/?name={{ person }}' >{{ person }}</a></p>
+          {% endfor %}
+        </p>
+
+	    </div>
+       <table>
+          <tr>
+            {% for letter in alphabet %}
+            <td><input type = "submit" class="form-control" value = {{letter}} id="name" name="name"></td>
+            {% endfor %}
+          </tr>
+      </table>
+
+    </body>
+</html>

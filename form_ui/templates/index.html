@@ -1,0 +1,112 @@
+<!-- Code adapted from https://pythonspot.com/flask-web-forms/ -->
+
+<!DOCTYPE html>
+<html>
+   <head>
+      <title>Search for a Person</title>
+      <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/search31.css') }}">
+      <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
+    <meta name="viewport" content="width = device-width, initial-scale =1.0"/>
+   </head>
+   <body>
+     <script src="../static/js/makeform.js"></script>
+         <header>
+           <div class="container">
+             <h1 class="logo">Search for {{ request.form['name'] }}</h1>
+             <strong><nav>
+               <ul class="menu">
+                <li><a href="{{ url_for('hello') }}">Add a Person</a></li>
+                <li><a href="{{ url_for('people') }}">People In Database</a></li>
+                <li><a href="{{ url_for('search') }}">Search for a person</a></li>
+                <li><a href="{{ url_for('display') }}">Display</a></li>
+               </ul>
+             </nav></strong>
+           </div>
+         </header>
+      <ul>
+          <div class="about">
+            <p>
+              {% if personarr %}
+                <br>
+                <h2>Results</h2>
+              {% endif %}
+              {% if personarr == 'none' %}
+                <p>No results found.</p>
+              {% endif %}
+              {% for p in personarr %}
+                <p><a href='/person/?name={{ p['name'] }}'>{{ p['name'] }}</a></p>
+              {% endfor %}
+              {% if person %}
+                <br><br>
+                <h3> Search again</h3>
+              {% endif %}
+            </p>
+          </div>
+      </ul>
+
+      <form action="" method="post" enctype="multipart/form-data">
+           {{ form.csrf }}
+           <div class="columns">
+            <div class="nothing1">
+              <p></p>
+            </div>
+           <div class="form-group">
+            <div class="names">
+             <!-- <label for="name">Name: </label>
+             <input type="text" class="form-control" id="name" name="name"> -->
+             <table>
+                <tr>
+                   {% for letter in alphabet %}
+                   <td><input type = "submit" class="form-control" value = {{letter}} id="name" name="name"></td>
+                   {% endfor %}
+                </tr>
+            </table>
+           </div>
+             <br>
+             <!-- <div class="degSta">
+             <label for="degree">Degree or Faculty/Staff: </label>
+             <input type="text" class="form-control" id="degree" name="degree">
+              </div> -->
+             <!-- <br> -->
+             <div class="grads">
+                <label for="year">Graduation Year: </label>
+               <div class="form-control" id="year" name="year"> </div>
+              </div>
+             <br>
+             <!-- <div class="occ">
+             <label for="occupation">Occupation or industry: </label>
+             <input type="text" class="form-control" id="occupation" name="occupation">
+           </div> -->
+
+
+             <div class="school">
+             <label for="school">School: </label>
+             <select name="school">
+               <option selected value></option>
+               <option value="artsandsciences">College of Arts & Sciences</option>
+               <option value="leedsbusiness">Leeds School of Business</option>
+               <option value="education">School of Education</option>
+               <option value="engineering">College of Engineering and Applied Science</option>
+               <option value="graduate">Graduate School</option>
+               <option value="lawschool">University of Colorado Law School</option>
+               <option value="media">College of Media, Communication and Information</option>
+               <option value="music">College of Music</option>
+               <option value="continuinged">Continuing Education and Professional Studies</option>
+               <option value="libraries">University Libraries</option>
+               <option value="envdesign">Program in Environmental Design</option>
+             </select>
+            </div>
+          <br>
+          </div>
+          <div class="nothing2">
+            <p></p>
+          </div>
+          </div>
+          <div class="inputSubmit">
+            <input type="submit" value="Submit" />
+          </div>
+
+
+      </form>
+   </body>
+</html>

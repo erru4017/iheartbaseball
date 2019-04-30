@@ -1,0 +1,336 @@
+*,
+*:before,
+*:after{
+	margin: 0;
+	padding: 0;
+	-moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+	box-sizing: border-box;
+}
+body {   
+	 text-align: center;
+	 color: black;
+	 background-color: black;
+	  -webkit-background-size: cover;
+	  -moz-background-size: cover;
+	  -o-background-size: cover;
+	  background-size: cover;
+	 font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+
+}
+h1 {
+	text-align: center;
+	font-size: 36px;
+	padding: 10px 0px 10px 0px;
+	margin: 0;
+	opacity: 1.0;
+}
+img {
+	display: block;
+    margin: 0 auto;
+    opacity: 1.0;
+    max-height: 100%;
+	width: auto;
+	height: auto;
+
+}
+.container{
+  display: flex;
+  flex:1;
+  background-color: black;
+}
+.forAbout{
+	position: relative;
+	width: 100%;
+	height: 50em;
+	order:2;
+	opacity: 0.97;
+	z-index: 3;
+}
+.about {
+	text-align: left;
+	position: relative;
+	width: 100%;
+	height: 50em;
+	order:2;
+	opacity: 1;
+	
+	/*padding-bottom: 50px;*/
+}
+.info{
+	padding-left: 50px;
+}
+
+p {
+	padding: 0;
+	/*padding-bottom: 10px;*/
+	opacity: 1.0;
+	display: inline-block;
+}
+p._id {
+	display: none;
+}
+p.name {
+	font-size: 45px;
+	font-weight: bold;
+	padding-right: 15px;
+}
+p.image1 {
+	display: none;
+}
+p.image2 {
+	display: none;
+}
+p.image3 {
+	display: none;
+}
+p.paragraph1, p.paragraph2, p.paragraph3 {
+	padding: 0 50px;
+}
+p.category {
+	display: none;
+}
+.paragraph {
+	width: 90%;
+	color: black;
+}
+.person_images .slick-prev {
+	left: 15px;
+}
+.person_images .slick-next {
+	right: 15px;
+}
+.buttons .slick-prev {
+	left: 15px;
+}
+.buttons .slick-next {
+	right: 15px;
+}
+.slick-next,.slick-prev{
+	z-index: 3;
+}
+p.iscategory {
+	display: none;
+}
+p.ex {
+	display: none;
+}
+p.school{
+	display: none;
+}
+p.heading{
+	padding-top: 40px;
+	color: black;
+	display: block;
+}
+p.expected {
+	display: inline-block;
+	padding-right: 0;
+}
+p.year {
+	display: inline-block;
+	padding-bottom: 10px;
+}
+p.facts {
+	white-space: pre-wrap;
+	color: black;
+	/*padding-bottom: 100px;*/
+}
+p.image_name {
+	display: none;
+}
+p.alt_txt {
+	display: none;
+}
+p.hidden {
+	display: none;
+}
+p.icon {
+	display: none;
+}
+p.icon_name {
+	display: none;
+}
+#personImg{
+	padding-right: 0px;
+	padding-left: 0px;
+	padding: 0 0px;
+
+}
+.tab {
+	width: 97%;
+    overflow: hidden;
+    background-color: black;
+}
+/*.buttons {
+	width: 100%;
+	height: 200px;
+	display: inline-flex;
+	white-space: nowrap;
+	overflow-x: scroll;
+	overflow-y: hidden;
+	-webkit-overflow-scrolling: touch;
+	position: relative;
+	z-index: 1;
+}*/
+.buttons {
+	margin: auto;
+    width: 100%;
+    /*padding: 10px;*/
+}
+.loop {
+    height: 200px;
+    white-space: nowrap;
+}
+
+/* Style the tab buttons */
+.tablink {
+    background-color: black;
+    color: black;
+    float: left;
+    outline: none;
+    cursor: pointer;
+    font-size: 17px;
+    min-width: 1px;
+    width: 240px !important;
+    border: none;
+    z-index: 1;
+    position: relative;
+}
+
+.buttons::-webkit-scrollbar { 
+    display: none; 
+}
+/* Change background color of buttons on hover */
+.tablink:hover {
+    background-color: #777;
+}
+
+/* Set default styles for tab content */
+.tabcontent {
+    color: white;
+    display: none;
+    padding-bottom: 50px;
+    z-index: 1;
+    position: relative;
+    
+}
+
+/* Style each tab content individually */ 
+#Person0 {
+	display: block;
+}
+
+/* If it is not of a certain display class then don't show it */
+
+img {
+	max-width: 100%;
+    max-height: 100%;
+    opacity: 1.0;
+}
+#arrowL{
+	width: 7%;
+	position: absolute;
+	left: 9px;
+	top: 812px;
+	z-index: 3;
+}
+#arrowR{
+	width: 7%;
+	position: absolute;
+	left: 657px;
+	top: 812px;
+	z-index: 3;
+}
+.categories{
+	background-color: grey;
+	display: flex;
+  	flex:1;
+}
+.tab1{
+	position: relative;
+	color: rgb(208, 186, 126);
+	font-size: 27px;
+	background-color: black;
+	min-width:10%;
+	width: 33.2%;
+	height: 80px;
+	order:1;
+	padding-top: 10px;
+	margin-right: 0.4%;
+	z-index: 4;
+}
+.tab2{
+	position: relative;
+	color:rgb(208, 186, 126);
+	font-size: 27px;
+	background-color: black;
+	min-width:10%;
+	width: 33.2%;
+	height: 80px;
+	order:2;
+	padding-top: 10px;
+	margin-right: 0.4%;
+	z-index: 4;
+}
+.tab3{
+	position: relative;
+	color:rgb(208, 186, 126);
+	font-size: 27px;
+	background-color: black;
+	min-width:10%;
+	width: 33.2%;
+	height: 80px;
+	order:3;
+	padding-top: 10px;
+	z-index: 4;
+	
+}
+.tab1:hover, .tab2:hover, .tab3:hover, .tab1:active, .tab2:active, .tab3:active, .tab1:target, .tab2:target, .tab3:target{
+	background-color: rgb(208, 186, 126);
+	color: black;
+}
+#greyCirc{
+	position: absolute;
+	top: 661px;
+	z-index: 2;
+}
+#blackCirc{
+	position: absolute;
+	top: 1035px;
+	z-index: 5;
+}
+.search{
+	z-index: 6;
+	color: white;
+	font-size: 25px;
+	padding-bottom: 5px;
+	text-decoration: none;
+}
+a:visited, a:link{
+	text-decoration: none;
+	color: inherit;
+}
+/* Drone animation styling */
+       
+#movingImage{
+width: 20%;
+border: 0px;
+z-index: 2;
+}
+#firstImage {
+width: 20%;
+border: 0px;
+z-index: 1;
+}
+#movingImage:active, :focus {
+outline: 0;
+border: none;
+-moz-outline-style: none;
+
+}
+#firstImage:active, :focus {
+outline: 0;
+border: none;
+-moz-outline-style: none;
+}

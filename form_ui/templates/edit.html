@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+	 <head>
+		  <title>Edit</title>
+	 </head>
+	 <body>
+		<link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/search31.css') }}">
+		<link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
+	 <meta name="viewport" content="width = device-width, initial-scale =1.0"/>
+		<script src="../static/js/makeform.js"></script>
+		<body onload="makeSelect('{{ person['year'] }}')">
+		<header>
+				<div class="container">
+				  <h1 class="logo">Edit {{ person['name'] }}</h1>
+				  <strong><nav>
+					 <ul class="menu">
+						<li><a href="{{ url_for('hello') }}">Add a Person</a></li>
+						<li><a href="{{ url_for('people') }}">Index</a></li>
+						<li><a href="{{ url_for('search') }}">Search for a person</a></li>
+						<li><a href="{{ url_for('display') }}">Display</a></li>
+					 </ul>
+				  </nav></strong>
+				</div>
+			 </header>
+		<div class="about">
+		  <br>
+			<p>Edit {{ person['name'] }}'s profile</p>
+		  <!-- Pull person passed in from database and display their information in the form -->
+		  <form action="" method="post" enctype="multipart/form-data">
+				{{ form.csrf }}
+				<div class="columns">
+	            <div class="nothing1">
+	              <p></p>
+	            </div>
+				<div class="form-group">
+				  <label for="name">Title: </label>
+				  <input type="text" class="form-control" id="name" name="name" value="{{ person['name'] }}">
+				  <!-- show image when uploaded -->
+				  <br>
+				  <label for="degree">Subtitle: </label>
+				  <input type="text" class="form-control" id="subtitle" name="subtitle" value="{{ person['subtitle'] }}">
+				  <br>
+				  <br>
+				  <!-- AUTOFILL YEAR -->
+				  <label for="occupation">Heading: </label>
+				  <input type="text" class="form-control" id="heading" name="heading" value="{{ person['heading'] }}">
+				  <br><br>
+				  <span class="btn btn-default btn-file">Upload An Icon: <input type="file" name="icon"></span>
+				  <p><img src="../static/tempImage/{{ person['name'] }}_icon.jpg" width='200' height='160' ></p>
+				  <br><br>
+				  <span class="btn btn-default btn-file">Upload First Image: <input type="file" name="image1"></span>
+				  <p><img src="../static/tempImage/{{ person['name'] }}_image1.jpg" width='200' height='160' ></p>
+				  <label for="facts">First Paragraph: </label>
+				  <input type="text" class="form-control" id="paragraph1" name="paragraph1" value="{{ person['paragraph1'] }}">
+				  <br><br><br><br>
+				  <span class="btn btn-default btn-file">Upload Second Image: <input type="file" name="image2"></span>
+				  <p><img src="../static/tempImage/{{ person['name'] }}_image2.jpg" width='200' height='160' ></p>
+				  <label for="facts">Second Paragraph: </label>
+				  <input type="text" class="form-control" id="paragraph2" name="paragraph2" value="{{ person['paragraph2'] }}">
+				  <br><br><br><br>
+				  <span class="btn btn-default btn-file">Upload Third Image: <input type="file" name="image3"></span>
+				  <p><img src="../static/tempImage/{{ person['name'] }}_image3.jpg" width='200' height='160' ></p>
+				  <label for="facts">Third Paragraph: </label>
+				  <input type="text" class="form-control" id="paragraph3" name="paragraph3" value="{{ person['paragraph3'] }}">
+				  <!-- show image when uploaded -->
+				  <br><br>
+				  <label for="category">Category: </label>
+				  <select name="category" value="{{ person['category'] }}">
+					  <option value="people">Category for People tab</option>
+                  <option value="astronauts">>>Astronauts</option>
+                  <option value="atheletes">>>Athletes</option>
+                  <option value="earlyfaculty">>>Early Faculty</option>
+                  <option value="history">Category for History tab</option>
+                  <option value="facts">>>Facts</option>
+                  <option value="buildings">>>Buildings</option>
+                  <option value="timeline">>>Timeline</option>
+                  <option value="Athletics">Category for Athletics tab</option>
+                  <option value="basketball">>>Basketball</option>
+                  <option value="football">>>Football</option>
+                  <option value="soccer">>>Soccer</option>
+				  </select>
+				  <!-- AUTOFILL SCHOOL -->
+				  <br><br>
+				  <!-- Maybe store number of facts somewhere in database so we know how many forms to show and populate -->
+				  <!-- <input type="checkbox" class="form-control" name="name">Show on display<br> -->
+				  <div id="container"></div>
+				  <!-- <a href="#" id="filldetails" onclick="moreFacts()">Add another fact</a> -->
+
+				  {% if person['hidden'] == 1 %}
+					 <input type="checkbox" class="form-control" name="hidden" value="{{ person['hidden'] }}" checked>Hidden<br>
+				  {% else %}
+					 <input type="checkbox" class="form-control" name="hidden" value="{{ person['hidden'] }}">Hidden<br>
+				  {% endif %}
+
+				<div class="inputSubmit">
+					 <input type="submit" value="Submit" />
+				</div>
+				</div>
+		  </div>
+		   <div class="nothing2">
+	              <p></p>
+	            </div>
+		 </div>
+		</form>
+	 </body>
+</html>

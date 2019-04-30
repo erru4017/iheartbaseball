@@ -1,0 +1,49 @@
+<html>
+   
+   <head>
+      <title>JavaScript Animation</title>
+      
+      <script type="text/javascript">
+         //<!--
+            var imgObj = null;
+            var animate ;
+            var count=0;
+            var originalPosition = document.getElementById("movingImage");
+            
+            function init(){
+               imgObj = document.getElementById('movingImage');
+               imgObj2 = document.getElementById('firstImage');
+               imgObj.style.position= 'relative'; 
+               imgObj.style.top = '600px'; 
+               imgObj2.style.position= 'relative'; 
+               imgObj2.style.top = '600px';
+               imgObj2.style.right = '300px';
+               originalPosition= '600px';
+               imgObj.style.visibility = 'hidden';
+            }
+            
+            function moveTop(){
+               if(count < 67){
+                  imgObj.style.visibility = 'visible';
+                  imgObj2.style.visibility = 'hidden';
+                	timer = imgObj.style.top = parseInt(imgObj.style.top) - 10 + 'px';
+               		animate = setTimeout(moveTop,20);
+                  count=count + 1;
+            	}else{
+                count = 0;
+                imgObj2.style.visibility = 'visible';
+                imgObj.style.visibility = 'hidden';
+                clearTimeout(animate);
+                imgObj.style.top = originalPosition;
+            	}   
+            }
+            window.onload =init;
+         //-->
+      </script>
+   </head>
+   <body>
+         <input type="image" id="movingImage" src="animatedPNGDrone.png" onclick="moveTop();"  />
+         <input type="image" id="firstImage" src="d.png" onclick="moveTop();"  />
+      
+   </body>
+</html>

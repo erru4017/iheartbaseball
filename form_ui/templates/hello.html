@@ -1,0 +1,80 @@
+ <!-- Code adapted from https://pythonspot.com/flask-web-forms/ -->
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>What is the Win Expectancy</title>
+    </head>
+    <body>
+      <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/search31.css') }}">
+      <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
+    <meta name="viewport" content="width = device-width, initial-scale =1.0"/>
+      <script src="../static/js/makeform.js"></script>
+      <body onload="makeSelect()">
+          <!-- <header>
+            <div class="container">
+              <h1 class="logo">Add a Person</h1>
+              <strong><nav>
+                <ul class="menu">
+                  <li><a href="{{ url_for('hello') }}">Add a Person</a></li>
+                  <li><a href="{{ url_for('people') }}">Index</a></li>
+                  <li><a href="{{ url_for('search') }}">Search for a person</a></li>
+                  <li><a href="{{ url_for('display') }}?category=people">Display</a></li>
+                </ul>
+              </nav></strong>
+            </div>
+          </header> -->
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                <ul>
+                    {% for message in messages %}
+                        {{ message[1] }}
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        {% endwith %}
+        <form action="" method="post" enctype="multipart/form-data">
+            {{ form.csrf }}
+            <div class="columns">
+            <div class="nothing1">
+                <p></p>
+            </div>
+
+            <div class="form-group">
+              <label for="team_home">Home Team: </label>
+              <input type="text" class="form-control" id="team_home" name="team_home">
+              <!-- show image when uploaded -->
+              <br><br>
+              <label for="team_away">Away Team: </label>
+              <input type="text" class="form-control" id="team_away" name="team_away">
+              <br><br>
+              <label for="inning">Inning: </label>
+              <input type="text" class="form-control" id="inning" name="inning">
+              <br><br>
+              <label for="category">Category: </label>
+              <select name="top_bot">
+                 <option value="top">Top</option>
+                 <option value="bot">Bottom</option>
+              </select>
+              <br><br>
+              <label for="outs">Outs: </label>
+              <input type="text" class="form-control" id="outs" name="outs">
+              <br><br>
+              <input type="checkbox" class="form-control" name="on_1b">Runner on 1st<br>
+              <input type="checkbox" class="form-control" name="on_2b">Runner on 2nd<br>
+              <input type="checkbox" class="form-control" name="on_3b">Runner on 3rd<br>
+
+              <br>
+            </div>
+            <div class="nothing2">
+                <!-- <img src="/static/imj/form_use.png"> -->
+                <p></p>
+            </div>
+
+          </div>
+            <div class="inputSubmit">
+                <input type="submit" value="Submit" />
+            </div>
+        </form>
+    </body>
+</html>
