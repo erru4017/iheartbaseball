@@ -7,6 +7,9 @@ from pybaseball.retrosheet import *
 import pandas as pd
 import numpy as np
 import math
+# import matplotlib.pyplot as plt
+import matplotlib
+matplotlib.use('TkAgg')
 import matplotlib.pyplot as plt
 import scipy.stats as stats
 # %matplotlib inline
@@ -59,19 +62,18 @@ def validStates(inning1, inning2, outs1, out2, topbot1, topbot2):
         return True
         
 def readData_Court():
-    df2015 = pd.read_csv("../data/2015/data2015.csv")
-    df2016 = pd.read_csv("../data/2016/data2016.csv")
-    df2017 = pd.read_csv("../data/2017/data2017.csv")
-    df2018 = pd.read_csv("../data/2018/data2018.csv")
+    # df2015 = pd.read_csv("../../../data/2015/data2015.csv")
+    df2016 = pd.read_csv("../../data/2016/data2016.csv")
+    # df2017 = pd.read_csv("../data/2017/data2017.csv")
+    # df2018 = pd.read_csv("../data/2018/data2018.csv")
     
-    df1518 = pd.concat([df2015, df2016, df2017, df2018])
+    # df1518 = pd.concat([df2015, df2016, df2017, df2018])
     
-    return df1518
+    # return df1518
+    return df2016
     
     
-def getState(df, inning, inning_topbot, on_1b, on_2b, on_3b, outs_when_up):
-    if (df == 0):
-        print("HELLO? you made it")
+def getState(df, inning, inning_topbot, on_1b, on_2b, on_3b, outs_when_up, score):
     if on_1b == 1:
         df_criteria = df.loc[df['on_1b'].notnull()]
     else:
@@ -85,9 +87,7 @@ def getState(df, inning, inning_topbot, on_1b, on_2b, on_3b, outs_when_up):
     else:
         df_criteria = df_criteria.loc[df['on_3b'].isnull()]
         
-    df_criteria = df_criteria.loc[(df['inning']==inning) & (df['inning_topbot']==inning_topbot)
-                         & ((df['home_score'])-(df['away_score'])==-1)
-                         & (df['outs_when_up']==outs_when_up)]
+    df_criteria = df_criteria.loc[(df['inning']==inning) & (df['inning_topbot']==inning_topbot) & ((df['home_score'])-(df['away_score'])==score) & (df['outs_when_up']==outs_when_up)]
     return len(df_criteria.loc[df_criteria['W'] == True])/len(df_criteria)
     
     

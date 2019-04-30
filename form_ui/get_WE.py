@@ -3,7 +3,9 @@
 import os, sys
 import datetime
 # import pymongo
+import pandas as pd
 import numpy as np
+
 from flask import Flask, render_template, flash, request
 from wtforms import Form, SelectField, TextField, TextAreaField, validators, StringField, SubmitField
 import win_expectancy
@@ -27,35 +29,50 @@ def checkbox(id):
         value = 0
     return value
 
-class ReusableForm(Form):
-    name = TextField('Title: ', validators=[validators.required()])
-    degree = TextField('Subtitle: ')
-    occupation = TextField('Heading:')
-
 
 @app.route("/", methods=['GET', 'POST'])
 def hello():
-    form = ReusableForm(request.form)
+    form = request.form
 
-    print (form.errors)
     if request.method == 'POST':
-        team_home = request.form['team_home'] # key value pairs
-        team_away = request.form['team_away']
-        inning = request.form['inning']
-        top_bot = request.form['top_bot']
+
+        df1518 = win_expectancy.readData_Court()
+        gameData = df1518.copy().groupby(['game_date', 'away_team', 'home_team']).max()[['away_score', 'home_score']].reset_index()
+        gameData['W'] = gameData['home_score']>gameData['away_score']
+        states = df1518.copy()
+        df = states.merge(gameData[['game_date','home_team','W']], how='inner',on=['game_date', 'home_team'])
+        ranking = pd.read_csv('../../data/rankings.csv') #https://www.baseball-reference.com/leagues/MLB/2018-standings.shtml
+
+        b_team_home = request.form['b_team_home']
+        b_team_away = request.form['b_team_away']
+        b_home_score = request.form['b_home_score'] 
+        b_away_score = request.form['b_away_score']
+        b_inning = request.form['b_inning']
+        b_top_bot = request.form['b_top_bot']
+        b_outs = request.form['b_outs']
+
+        b_on_1b = checkbox('b_on_1b')
+        b_on_2b = checkbox('b_on_2b')
+        b_on_3b = checkbox('b_on_3b')
+
+
+        # team_home = request.form['team_home'] # key value pairs
+        # team_away = request.form['team_away']
+        home_score = request.form['home_score']
+        away_score = request.form['away_score']
         outs = request.form['outs']
 
         on_1b = checkbox('on_1b')
         on_2b = checkbox('on_2b')
         on_3b = checkbox('on_3b')
 
-        # saving all images into folder and getting filenames
+        probBefore = win_expectancy.getState(df, int(b_inning), b_top_bot, b_on_1b, b_on_2b, b_on_3b, int(b_outs), int(b_home_score)-int(b_away_score))
+        probCurrent = win_expectancy.getState(df, int(b_inning), b_top_bot, on_1b, on_2b, on_3b, int(outs), int(home_score)-int(away_score))
+        r = win_expectancy.getRank(ranking, b_team_home)
+        newProb = win_expectancy.getWeight(probBefore, probCurrent, r)
+        print (newProb)
 
-        if form.validate():
-            win_expectancy.getState(0, inning, top_bot, on_1b, on_2b, on_3b, outs)
-            print("HELLOOO?")
-        else:
-            flash('The title field is required.')
+    
     return render_template('hello.html', form=form)
 
 
@@ -70,7 +87,7 @@ def hello():
 #     # print (letter)
 #     # person = retrieve_from_db.searchByLetter(letter)
 #     return render_template('people.html', person = person, people = personarr, alphabet=alphabet)
-# 
+
 # 
 # @app.route("/edit/", methods=['GET', 'POST'])
 # def edit():

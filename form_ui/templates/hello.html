@@ -9,21 +9,7 @@
       <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/search31.css') }}">
       <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
     <meta name="viewport" content="width = device-width, initial-scale =1.0"/>
-      <script src="../static/js/makeform.js"></script>
-      <body onload="makeSelect()">
-          <!-- <header>
-            <div class="container">
-              <h1 class="logo">Add a Person</h1>
-              <strong><nav>
-                <ul class="menu">
-                  <li><a href="{{ url_for('hello') }}">Add a Person</a></li>
-                  <li><a href="{{ url_for('people') }}">Index</a></li>
-                  <li><a href="{{ url_for('search') }}">Search for a person</a></li>
-                  <li><a href="{{ url_for('display') }}?category=people">Display</a></li>
-                </ul>
-              </nav></strong>
-            </div>
-          </header> -->
+
         {% with messages = get_flashed_messages(with_categories=true) %}
             {% if messages %}
                 <ul>
@@ -39,23 +25,45 @@
             <div class="nothing1">
                 <p></p>
             </div>
-
-            <div class="form-group">
-              <label for="team_home">Home Team: </label>
-              <input type="text" class="form-control" id="team_home" name="team_home">
-              <!-- show image when uploaded -->
+            <h2>Before</h2>
+            <div class="form-group-before">
+              <label for="b_team_home">Home Team: </label>
+              <input type="text" class="form-control" id="b_team_home" name="b_team_home">
               <br><br>
-              <label for="team_away">Away Team: </label>
-              <input type="text" class="form-control" id="team_away" name="team_away">
+              <label for="b_team_away">Away Team: </label>
+              <input type="text" class="form-control" id="b_team_away" name="b_team_away">
               <br><br>
-              <label for="inning">Inning: </label>
-              <input type="text" class="form-control" id="inning" name="inning">
+              <label for="b_home_score">Home Score: </label>
+              <input type="text" class="form-control" id="b_home_score" name="b_home_score">
               <br><br>
-              <label for="category">Category: </label>
-              <select name="top_bot">
-                 <option value="top">Top</option>
-                 <option value="bot">Bottom</option>
+              <label for="b_away_score">Away Score: </label>
+              <input type="text" class="form-control" id="b_away_score" name="b_away_score">
+              <br><br>
+              <label for="b_inning">Inning: </label>
+              <input type="text" class="form-control" id="b_inning" name="b_inning">
+              <br><br>
+              <label for="b_category">Category: </label>
+              <select name="b_top_bot">
+                 <option value="Top">Top</option>
+                 <option value="Bot">Bottom</option>
               </select>
+              <br><br>
+              <label for="b_outs">Outs: </label>
+              <input type="text" class="form-control" id="b_outs" name="b_outs">
+              <br><br>
+              <input type="checkbox" class="form-control" name="b_on_1b">Runner on 1st<br>
+              <input type="checkbox" class="form-control" name="b_on_2b">Runner on 2nd<br>
+              <input type="checkbox" class="form-control" name="b_on_3b">Runner on 3rd<br>
+
+              <br>
+            </div>
+            <h2>After</h2>
+            <div class="form-group-before">
+              <label for="home_score">Home Score: </label>
+              <input type="text" class="form-control" id="home_score" name="home_score">
+              <br><br>
+              <label for="away_score">Away Score: </label>
+              <input type="text" class="form-control" id="away_score" name="away_score">
               <br><br>
               <label for="outs">Outs: </label>
               <input type="text" class="form-control" id="outs" name="outs">

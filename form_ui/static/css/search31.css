@@ -11,25 +11,25 @@
 body {
 	margin: 0;
 	padding: 0;
-	background-color: #7F7763;
+	background-color: black;
 	font-family: 'Poppins', sans-serif;
 	color: #ffedc6;
 	text-align: center;
 }
 
 h1{
-	color: #ffd679;
+	color: white;
 	font-size: 52px;
 	padding-top: 20px;
 	padding-bottom: 10px;
 }
 h2{
-	color: #ffd679;
+	color: white;
 	font-size: 42px;
 	padding-bottom: 10px;
 }
 h3{
-	color: #ffd679;
+	color: white;
 	font-size: 42px;
 	padding-bottom: 10px;
 }
@@ -75,11 +75,11 @@ input[type=text] {
       padding: 4px 5px;
       margin: 8px 0;
       font-size: 1.1em;
-      border: 2px solid #ffd679;
+      border: 2px solid white;
       border-radius: 3px;
       transition: all 500ms ease-in-out;
       cursor: pointer;
-      color: #7f704d;
+      color: gray;
 }
 input[type=checkbox] {
       margin: 8px 0;
@@ -90,7 +90,7 @@ input[name=hidden] {
 
 input[type=text]:focus {
       background-color: rgb(248, 247, 255);
-      color: #7f704d;
+      color: gray;
       box-shadow: 2px 2px 5px 1px #3a3429;
      }
  input[type=submit] {
@@ -99,12 +99,12 @@ input[type=text]:focus {
       padding: 7px 15px;
       transition: all 500ms ease-in-out;
       cursor: pointer;
-      color: #7f704d;
+      color: gray;
      }
 
      input[type=submit]:focus {
        box-shadow: 2px 2px 5px 1px #3a3429;
-       color: #7f704d;
+       color: gray;
      }
 .inputSubmit{
 	text-align: center;
