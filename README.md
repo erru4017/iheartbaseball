@@ -1,7 +1,7 @@
 # iheartbaseball #
 ## Erin Ruby and Courtney Solano ##
 A new and improved way to calculate win expectancy.  
-[]https://www.loom.com/share/9d10bf6e88d049a4b61be0971d7476df
+https://www.loom.com/share/9d10bf6e88d049a4b61be0971d7476df
 # Explanation of statistic #
 Win Expectancy is the percent chance that a team will win, given a current state, right before a player bats in the game. The current win expectancy is calculated using historical data, looking at the percent of teams that have won, given a current state. The states consist of the inning number, whether is it is the top or bottom of the inning, if the team is tied or winning or losing by 1 point, how many outs there are, and runners on base. 
 
@@ -12,7 +12,6 @@ Our Win Expectancy solves that problem, and does more! We calculate win expectan
 Our win expectancy is calculated using historical data and adding weights to each probability. 
 
 /$$WE = \frac{P(current)}{P(previous)} + P(current) + rank$$ 
-(Screen Shot 2019-05-01 at 12.41.44 PM.png?raw=true)
 
 Where $P(current)$ is the probability that the team will win, given the $current$ state, $P(previous)$ is the probability that the team will win, given the $previous$ state, and $rank$ is the given team's ranking normalized by dividing $0.1$ by it. The $\frac{P(current)}{P(previous)}$ is positive if it results in a number greater than $1$ and negative if the value is less than $1$. We did this because if the probability of winning given a current state is less than the probability of winning given the previous state, we expect the win expectancy to go down because the team just completed a worse play. It also gets normalized by dividing it by $100$.
 
