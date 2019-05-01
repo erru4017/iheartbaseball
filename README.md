@@ -5,15 +5,16 @@ The current win expectancy is in a table, completed by Tom Tango, with all the p
 
 Our Win Expectancy solves that problem, and does more! We calculate win expectancy using historical data, but we can do it for any state the user types in and any team. We used the rankings from Baseball Reference in 2018 of the teams to add more weight to their WE. We also take the previous state into consideration in the WE calculation because 2 good states in a row can signify that more good states are possible in the future, therefore increasing the team's chance of winning.
 
-Our win expectancy is calculated using historical data and adding weights to each probability.    
-$$WE = \frac{P(current)}{P(previous)} + P(current) + rank$$  
+Our win expectancy is calculated using historical data and adding weights to each probability. 
+
+/$$WE = \frac{P(current)}{P(previous)} + P(current) + rank$$ 
+
 Where $P(current)$ is the probability that the team will win, given the $current$ state, $P(previous)$ is the probability that the team will win, given the $previous$ state, and $rank$ is the given team's ranking normalized by dividing $0.1$ by it. The $\frac{P(current)}{P(previous)}$ is positive if it results in a number greater than $1$ and negative if the value is less than $1$. We did this because if the probability of winning given a current state is less than the probability of winning given the previous state, we expect the win expectancy to go down because the team just completed a worse play. It also gets normalized by dividing it by $100$.
 
 # Demonstration #
 To run the code locally, run in your terminal-
 ```
 python get_WE.py
-
 ```
 Copy and paste the URL. 
 
