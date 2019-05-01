@@ -29,12 +29,11 @@ The user enters the home and away team, if it is the top or bottom of the inning
 
 # Evaluation of statistic #
 
+Tom Tango's tables are generic and limited. He only has values for bottom of the 7th-9th innings. He has each combination listed out, with outs and runners on base. He also only evaluates with the score as either tied or a difference of 1. This is where our statistic improved the win expectancy.  
+
 Our win expectancy calculation is better than Tom Tango's statistic because it is more accurate. Take this example: Rockies are at the bottom of the 7th inning, game is tied, there are no outs and no runners on base. Tom Tango gives this scenario a **0.548**. This means that the home team is favored to win. Our statistic gives this scenario a **0.275**, meaning the Rockies are most likely going to lose. There was a game on June 18th, 2017, where this exact scenario happened and the Rockies lost. Our statistic predicted this with much more accuracy than Tom Tango's. 
 
 # Limitations #
 
 A limitation for our win expectancy calculation is the it only works for two consecutive states, within the same inning. So, if a user wanted to get the win expectancy for the first at-bat in an inning, our code would not allow this. Also, our statistic only uses a couple of years of data, because it takes a very long time to read in. Therefore, the numbers are not quite as accurate for the unmodified win expectancy than we would like. We could have hard coded Tom Tango's tables instead, but that would take years, and we wanted to be able to use any inning and any difference in score that has happened in the past. Because we use such specific criteria to narrow down the data to the state the user inputs, there is much less data, and therefore it is not as accurate as it could be with much more data.
 
-
-
-# NOT FINISHED #
