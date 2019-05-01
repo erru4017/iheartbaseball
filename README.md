@@ -11,11 +11,9 @@ Our Win Expectancy solves that problem, and does more! We calculate win expectan
 
 Our win expectancy is calculated using historical data and adding weights to each probability. 
 
-/$$WE = \frac{P(current)}{P(previous)} + P(current) + rank$$ 
-
 ![Alt text](eq.png?raw=true "Title")
 
-Where $P(current)$ is the probability that the team will win, given the $current$ state, $P(previous)$ is the probability that the team will win, given the $previous$ state, and $rank$ is the given team's ranking normalized by dividing $0.1$ by it. The $\frac{P(current)}{P(previous)}$ is positive if it results in a number greater than $1$ and negative if the value is less than $1$. We did this because if the probability of winning given a current state is less than the probability of winning given the previous state, we expect the win expectancy to go down because the team just completed a worse play. It also gets normalized by dividing it by $100$.
+Where *P(current)* is the probability that the team will win, given the *current* state, *P(previous)* is the probability that the team will win, given the *previous* state, and *rank* is the given team's ranking normalized by dividing **0.1** by it. The *P(current)/P(previous)* is positive if it results in a number greater than **1** and negative if the value is less than **1**. We did this because if the probability of winning given a current state is less than the probability of winning given the previous state, we expect the win expectancy to go down because the team just completed a worse play. It also gets normalized by dividing it by **100**.
 
 # Demonstration #
 To run the code locally, run in your terminal-
@@ -30,7 +28,7 @@ The user enters the home and away team, if it is the top or bottom of the inning
 
 # Evaluation of statistic #
 
-Our win expectancy calculation is better than Tom Tango's statistic because it is more accurate. Take this example: Rockies are at the bottom of the 7th inning, game is tied, there are no outs and no runners on base. Tom Tango gives this scenario a $0.548$. This means that the home team is favored to win. Our statistic gives this scenario a $0.275$, meaning the Rockies are most likely going to lose. There was a game on June 18th, 2017, where this exact scenario happened and the Rockies lost. Our statistic predicted this with much more accuracy than Tom Tango's. 
+Our win expectancy calculation is better than Tom Tango's statistic because it is more accurate. Take this example: Rockies are at the bottom of the 7th inning, game is tied, there are no outs and no runners on base. Tom Tango gives this scenario a **0.548**. This means that the home team is favored to win. Our statistic gives this scenario a **0.275**, meaning the Rockies are most likely going to lose. There was a game on June 18th, 2017, where this exact scenario happened and the Rockies lost. Our statistic predicted this with much more accuracy than Tom Tango's. 
 
 # Limitations #
 
