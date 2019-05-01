@@ -32,7 +32,7 @@ Our win expectancy calculation is better than Tom Tango's statistic because it i
 
 # Limitations #
 
-A limitations for our win expectancy calculation is the it only works for two consecutive states, within the same inning. So, if a user wanted to get the win expectancy for the first at-bat in an inning, our code would not allow this. Also, our statistic only uses a couple of years of data, because it takes a very long time to read in. Therefore, the numbers are not quite as accurate for the unmodified win expectancy than we would like. We could have hard coded Tom Tango's tables instead, but that would take years, and we wanted to be able to use any inning and any difference in score that has happened in the past. Because we use such specific criteria to narrow down the data to the state the user inputs, there is much less data, and therefore it is not as accurate as it could be with much more data.
+A limitation for our win expectancy calculation is the it only works for two consecutive states, within the same inning. So, if a user wanted to get the win expectancy for the first at-bat in an inning, our code would not allow this. Also, our statistic only uses a couple of years of data, because it takes a very long time to read in. Therefore, the numbers are not quite as accurate for the unmodified win expectancy than we would like. We could have hard coded Tom Tango's tables instead, but that would take years, and we wanted to be able to use any inning and any difference in score that has happened in the past. Because we use such specific criteria to narrow down the data to the state the user inputs, there is much less data, and therefore it is not as accurate as it could be with much more data.
 
 
 
