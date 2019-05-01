@@ -18,6 +18,7 @@ Where *P(current)* is the probability that the team will win, given the *current
 # Demonstration #
 To run the code locally, run in your terminal-
 ```
+cd form_ui
 python get_WE.py
 ```
 Copy and paste the URL. 
