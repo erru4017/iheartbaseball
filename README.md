@@ -1,7 +1,7 @@
 # iheartbaseball #
 ## Erin Ruby and Courtney Solano ##
 A new and improved way to calculate win expectancy.  
-(https://www.loom.com/share/9d10bf6e88d049a4b61be0971d7476df)
+[]https://www.loom.com/share/9d10bf6e88d049a4b61be0971d7476df
 # Explanation of statistic #
 Win Expectancy is the percent chance that a team will win, given a current state, right before a player bats in the game. The current win expectancy is calculated using historical data, looking at the percent of teams that have won, given a current state. The states consist of the inning number, whether is it is the top or bottom of the inning, if the team is tied or winning or losing by 1 point, how many outs there are, and runners on base. 
 
